@@ -341,8 +341,14 @@ function calculateBalance(arr) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  const count = Math.ceil(arr.length / chunkSize);
+
+  return Array.from({ length: count }, (_, index) => {
+    const first = index * chunkSize;
+    const last = first + chunkSize;
+    return arr.slice(first, last);
+  });
 }
 
 /**
@@ -447,8 +453,11 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  return arr.map((num) => {
+    const string = num.toString(16).padStart(6, '0');
+    return `#${string.toUpperCase()}`;
+  });
 }
 
 /**
@@ -465,8 +474,9 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const sort = arr.sort((a, b) => b - a);
+  return sort.slice(0, n);
 }
 
 /**
@@ -481,8 +491,10 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  const newArr2 = new Set(arr2);
+
+  return arr1.filter((el) => newArr2.has(el));
 }
 
 /**
