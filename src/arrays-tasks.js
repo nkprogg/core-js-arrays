@@ -93,7 +93,7 @@ function findAllOccurrences(arr, item) {
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
 function removeFalsyValues(arr) {
-  return arr.filter(Boolean);
+  return arr.filter((item) => Boolean(item));
 }
 
 /**
@@ -179,9 +179,7 @@ function isValueEqualsIndex(arr) {
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-  const array = arr;
-  arr.splice(index, 0, item);
-  return array;
+  return arr.splice(index, 0, item);
 }
 
 /**
